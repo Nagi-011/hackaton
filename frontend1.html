@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduHub - Your Learning Partner</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4F46E5',
+secondary: '#10B981'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.grade-card:hover .grade-overlay { opacity: 1; }
+.search-results {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: white;
+border-radius: 8px;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+z-index: 50;
+}
+.search-container:focus-within .search-results {
+display: block;
+}
+</style>
+</head>
+<body class="bg-gray-50 font-['Inter']">
+<header class="bg-white shadow-sm fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary">eduhub</a>
+</div>
+<div class="flex-1 max-w-2xl mx-8 relative search-container">
+<div class="relative">
+<input type="text" placeholder="Search for subjects, topics, or resources..."
+class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-primary">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+<div class="search-results p-4">
+<div class="mb-4">
+<h4 class="text-sm font-semibold text-gray-700 mb-2">Popular Searches</h4>
+<div class="space-y-2">
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Advanced Mathematics</a>
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Physics Mechanics</a>
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Computer Programming</a>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-700 mb-2">Recent Searches</h4>
+<div class="space-y-2">
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Calculus</a>
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Electronics</a>
+<a href="#" class="block text-sm text-gray-600 hover:text-primary">Data Structures</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line text-xl"></i>
+</div>
+</button>
+<button class="text-gray-600 hover:text-primary">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-bookmark-line text-xl"></i>
+</div>
+</button>
+<a href="login page.html">
+<button class="flex items-center space-x-2 text-gray-600 hover:text-primary">
+<div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+<i class="ri-user-line"></i>
+</div>
+</a>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-16">
+<section class="relative bg-gradient-to-r from-indigo-600 to-primary overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="text-white">
+<h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
+Your Journey to Academic Excellence Starts Here
+</h1>
+<p class="text-lg mb-8 text-indigo-100">
+Access comprehensive study materials, engage with peers, and excel in your academic journey from Class 1 to Engineering.
+</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-white text-primary px-6 py-3 rounded-button font-semibold hover:bg-opacity-90 transition-all whitespace-nowrap">
+    <a href="login page.html">
+Get Started
+    </a>
+</button>
+<button class="border-2 border-white text-white px-6 py-3 rounded-button font-semibold hover:bg-white hover:text-primary transition-all whitespace-nowrap">
+Explore Resources
+</button>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<img src="https://public.readdy.ai/ai/img_res/463c72f16ab6b54407ea067d723685c9.jpg"
+alt="Education Illustration"
+class="rounded-lg shadow-xl">
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Choose Your Grade Level</h2>
+<p class="text-lg text-gray-600">Select your grade to access tailored study materials and resources</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer grade-card">
+<div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 p-6">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4">
+<i class="ri-book-open-line text-2xl text-blue-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-white">Primary School</h3>
+<p class="text-white text-opacity-80">Classes 1-5</p>
+</div>
+<div class="grade-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 rounded-button font-semibold whitespace-nowrap">
+View Resources
+</button>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer grade-card">
+<div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 p-6">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4">
+<i class="ri-book-mark-line text-2xl text-green-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-white">Middle School</h3>
+<p class="text-white text-opacity-80">Classes 6-8</p>
+</div>
+<div class="grade-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 rounded-button font-semibold whitespace-nowrap">
+View Resources
+</button>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer grade-card">
+<div class="h-48 bg-gradient-to-br from-yellow-500 to-orange-600 p-6">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4">
+<i class="ri-graduation-cap-line text-2xl text-yellow-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-white">High School</h3>
+<p class="text-white text-opacity-80">Classes 9-12</p>
+</div>
+<div class="grade-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 rounded-button font-semibold whitespace-nowrap">
+View Resources
+</button>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer grade-card">
+<div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 p-6">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4">
+<i class="ri-building-line text-2xl text-red-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-white">Exam</h3>
+<p class="text-white text-opacity-80"></p>
+</div>
+<div class="grade-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 rounded-button font-semibold whitespace-nowrap">
+Test yourself
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Popular Subjects</h2>
+<p class="text-lg text-gray-600">Explore our most accessed subjects and start learning today</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="h-48 relative">
+<img src="https://public.readdy.ai/ai/img_res/e6eb01ebccd453636433656733d4697d.jpg"
+alt="Mathematics"
+class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-semibold text-white">Mathematics</h3>
+<p class="text-white text-opacity-90">2,500+ Resources</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center space-x-4 mb-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Algebra</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Calculus</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Geometry</span>
+</div>
+<button class="w-full bg-primary text-white px-6 py-2 rounded-button font-semibold hover:bg-opacity-90 transition-all whitespace-nowrap">
+Explore Mathematics
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="h-48 relative">
+<img src="https://public.readdy.ai/ai/img_res/de370276e8d0dc0eac0de4c0068b423e.jpg"
+alt="Physics"
+class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-semibold text-white">Physics</h3>
+<p class="text-white text-opacity-90">2,100+ Resources</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center space-x-4 mb-4">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Mechanics</span>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Electricity</span>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Optics</span>
+</div>
+<button class="w-full bg-primary text-white px-6 py-2 rounded-button font-semibold hover:bg-opacity-90 transition-all whitespace-nowrap">
+Explore Physics
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="h-48 relative">
+<img src="https://public.readdy.ai/ai/img_res/199e0fff2788723f4223ae8b37b0f62f.jpg"
+alt="Computer Science"
+class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-semibold text-white">Computer Science</h3>
+<p class="text-white text-opacity-90">1,800+ Resources</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center space-x-4 mb-4">
+<span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Programming</span>
+<span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Data Structures</span>
+<span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Algorithms</span>
+</div>
+<button class="w-full bg-primary text-white px-6 py-2 rounded-button font-semibold hover:bg-opacity-90 transition-all whitespace-nowrap">
+Explore Computer Science
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Learning Statistics</h2>
+<p class="text-lg text-gray-600">Track your progress and see how our community is growing</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Student Engagement</h3>
+<div id="engagementChart" class="h-80"></div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Resource Distribution</h3>
+<div id="resourceChart" class="h-80"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Latest Discussions</h2>
+<p class="text-lg text-gray-600">Join the conversation and learn from your peers</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-user-line text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-semibold text-gray-900">Alexander Thompson</h4>
+<p class="text-sm text-gray-500">2 hours ago</p>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Understanding Complex Numbers</h3>
+<p class="text-gray-600 mb-4">Looking for help with imaginary numbers and their applications in electrical engineering...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line"></i>
+<span>24</span>
+</button>
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-message-2-line"></i>
+<span>12</span>
+</button>
+</div>
+<span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Mathematics</span>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-user-line text-green-600"></i>
+</div>
+<div>
+<h4 class="font-semibold text-gray-900">Isabella Martinez</h4>
+<p class="text-sm text-gray-500">4 hours ago</p>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Python vs Java for Beginners</h3>
+<p class="text-gray-600 mb-4">Which programming language would you recommend for someone starting their coding journey?</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line"></i>
+<span>18</span>
+</button>
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-message-2-line"></i>
+<span>8</span>
+</button>
+</div>
+<span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Programming</span>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+<i class="ri-user-line text-red-600"></i>
+</div>
+<div>
+<h4 class="font-semibold text-gray-900">William Chen</h4>
+<p class="text-sm text-gray-500">6 hours ago</p>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Quantum Mechanics Basics</h3>
+<p class="text-gray-600 mb-4">Can someone explain the double-slit experiment in simple terms? Having trouble grasping the concept...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line"></i>
+<span>32</span>
+</button>
+<button class="flex items-center space-x-1 text-gray-500 hover:text-primary">
+<i class="ri-message-2-line"></i>
+<span>15</span>
+</button>
+</div>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Physics</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] mb-4">eduhub</h3>
+<p class="text-gray-400">Empowering students with comprehensive educational resources and collaborative learning opportunities.</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Resources</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">Study Materials</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Video Lectures</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Practice Tests</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Discussion Forums</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-facebook-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-twitter-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-linkedin-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-instagram-fill text-xl"></i>
+</a>
+</div>
+
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+<p>&copy; 2025 EduHub. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const engagementChart = echarts.init(document.getElementById('engagementChart'));
+const resourceChart = echarts.init(document.getElementById('resourceChart'));
+const engagementOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+textStyle: {
+color: '#1f2937'
+}
+},
+xAxis: {
+type: 'category',
+data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+}
+},
+series: [{
+data: [820, 932, 901, 934, 1290, 1330],
+type: 'line',
+smooth: true,
+itemStyle: {
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Study Materials Portal</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm fixed w-full top-0 z-50">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex">
+<div class="flex-shrink-0 flex items-center">
+<img class="h-8 w-auto" src="/logo.svg" alt="Study Portal">
+</div>
+<div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+<a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Subjects</a>
+<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Resources</a>
+<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Discussion</a>
+</div>
+</div>
+<div class="flex items-center">
+<div class="flex-shrink-0">
+<button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+<span>Sign In</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+<section class="py-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="text-left">
+<h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+<span class="block">Interactive 3D</span>
+<span class="block text-primary">Learning Experience</span>
+</h1>
+<p class="mt-6 text-lg text-gray-600">
+Explore complex concepts through interactive 3D models. Rotate, zoom, and discover detailed explanations. Switch between study and quiz modes to enhance your understanding.
+</p>
+<div class="mt-8 flex flex-wrap gap-4">
+<button class="bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-opacity-90 transition-all whitespace-nowrap flex items-center">
+<i class="ri-play-circle-line mr-2"></i>
+Start Learning
+</button>
+<button class="border-2 border-primary text-primary px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition-all whitespace-nowrap flex items-center">
+<i class="ri-game-line mr-2"></i>
+Try Quiz Mode
+</button>
+</div>
+</div>
+<div class="relative">
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="relative aspect-[4/3] rounded overflow-hidden mb-4">
+<div id="3d-model-viewer" class="w-full h-full bg-gray-100 rounded flex items-center justify-center">
+<div class="text-center">
+<i class="ri-cube-line text-6xl text-gray-400 mb-4"></i>
+<p class="text-gray-500">3D Model Loading...</p>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-zoom-in-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-refresh-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-fullscreen-line"></i>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap">
+Study Mode
+</button>
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors whitespace-nowrap">
+Quiz Mode
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+<i class="ri-volume-up-line"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+<i class="ri-settings-3-line"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-4">
+<div class="flex items-center space-x-2 text-sm">
+<i class="ri-medal-line text-yellow-500"></i>
+<span class="font-medium">Progress: 65%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Mock 3D model interaction
+const modelViewer = document.getElementById('3d-model-viewer');
+const zoomBtn = modelViewer.querySelector('.ri-zoom-in-line').parentElement;
+const rotateBtn = modelViewer.querySelector('.ri-refresh-line').parentElement;
+const fullscreenBtn = modelViewer.querySelector('.ri-fullscreen-line').parentElement;
+let isZoomed = false;
+zoomBtn.addEventListener('click', () => {
+isZoomed = !isZoomed;
+modelViewer.style.transform = isZoomed ? 'scale(1.2)' : 'scale(1)';
+zoomBtn.querySelector('i').className = isZoomed ? 'ri-zoom-out-line' : 'ri-zoom-in-line';
+});
+let rotation = 0;
+rotateBtn.addEventListener('click', () => {
+rotation += 90;
+modelViewer.style.transform = `rotate(${rotation}deg)`;
+});
+let isFullscreen = false;
+fullscreenBtn.addEventListener('click', () => {
+isFullscreen = !isFullscreen;
+if (isFullscreen) {
+modelViewer.requestFullscreen();
+} else {
+document.exitFullscreen();
+}
+fullscreenBtn.querySelector('i').className = isFullscreen ? 'ri-fullscreen-exit-line' : 'ri-fullscreen-line';
+});
+// Mode switching
+const studyModeBtn = document.querySelector('button:contains("Study Mode")');
+const quizModeBtn = document.querySelector('button:contains("Quiz Mode")');
+studyModeBtn.addEventListener('click', () => {
+studyModeBtn.classList.add('bg-primary', 'text-white');
+quizModeBtn.classList.remove('bg-primary', 'text-white');
+});
+quizModeBtn.addEventListener('click', () => {
+quizModeBtn.classList.add('bg-primary', 'text-white');
+studyModeBtn.classList.remove('bg-primary', 'text-white');
+});
+});
+</script>
+<section class="py-12 bg-gray-50">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Interactive Learning Models</h2>
+<p class="text-lg text-gray-600">Explore our collection of 3D educational models across different subjects</p>
+</div>
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+<div class="relative aspect-[4/3] bg-gray-100">
+<div class="absolute inset-0 flex items-center justify-center">
+<i class="ri-heart-pulse-line text-6xl text-gray-400"></i>
+</div>
+<div class="absolute bottom-4 right-4 flex space-x-2">
+<button class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-play-line"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Human Anatomy</h3>
+<p class="text-gray-600 mb-4">Explore detailed 3D models of human body systems and organs</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<i class="ri-user-line text-gray-400"></i>
+<span class="text-sm text-gray-500">2.5k learners</span>
+</div>
+<button class="text-primary hover:text-opacity-80 font-medium">Learn More</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+<div class="relative aspect-[4/3] bg-gray-100">
+<div class="absolute inset-0 flex items-center justify-center">
+<i class="ri-flask-line text-6xl text-gray-400"></i>
+</div>
+<div class="absolute bottom-4 right-4 flex space-x-2">
+<button class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-play-line"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Molecular Structure</h3>
+<p class="text-gray-600 mb-4">Study chemical compounds and molecular bonds in 3D</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<i class="ri-user-line text-gray-400"></i>
+<span class="text-sm text-gray-500">1.8k learners</span>
+</div>
+<button class="text-primary hover:text-opacity-80 font-medium">Learn More</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+<div class="relative aspect-[4/3] bg-gray-100">
+<div class="absolute inset-0 flex items-center justify-center">
+<i class="ri-shape-2-line text-6xl text-gray-400"></i>
+</div>
+<div class="absolute bottom-4 right-4 flex space-x-2">
+<button class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-lg text-gray-700 hover:text-primary transition-colors">
+<i class="ri-play-line"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Geometric Shapes</h3>
+<p class="text-gray-600 mb-4">Visualize complex geometric concepts and transformations</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<i class="ri-user-line text-gray-400"></i>
+<span class="text-sm text-gray-500">2.1k learners</span>
+</div>
+<button class="text-primary hover:text-opacity-80 font-medium">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg">
+<div class="p-5">
+<div class="flex items-center">
+<div class="flex-shrink-0">
+<svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+</svg>
+</div>
+<div class="ml-5">
+<h3 class="text-lg font-medium text-gray-900">Primary School</h3>
+<p class="text-sm text-gray-500">Class 1-5</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3">
+<div class="text-sm">
+<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View materials</a>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg">
+<div class="p-5">
+<div class="flex items-center">
+<div class="flex-shrink-0">
+<svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+</svg>
+</div>
+<div class="ml-5">
+<h3 class="text-lg font-medium text-gray-900">Middle School</h3>
+<p class="text-sm text-gray-500">Class 6-8</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3">
+<div class="text-sm">
+<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View materials</a>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg">
+<div class="p-5">
+<div class="flex items-center">
+<div class="flex-shrink-0">
+<svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+</svg>
+</div>
+<div class="ml-5">
+<h3 class="text-lg font-medium text-gray-900">High School</h3>
+<p class="text-sm text-gray-500">Class 9-12</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3">
+<div class="text-sm">
+<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View materials</a>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg">
+<div class="p-5">
+<div class="flex items-center">
+<div class="flex-shrink-0">
+<svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+</svg>
+</div>
+<div class="ml-5">
+<h3 class="text-lg font-medium text-gray-900">Engineering</h3>
+<p class="text-sm text-gray-500">Undergraduate</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3">
+<div class="text-sm">
+<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View materials</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12">
+<h2 class="text-2xl font-bold text-gray-900 mb-8">Popular Subjects</h2>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+<div class="px-4 py-5 sm:px-6">
+<h3 class="text-lg font-medium text-gray-900">Mathematics</h3>
+<p class="mt-1 text-sm text-gray-500">Algebra, Calculus, Geometry and more</p>
+</div>
+<div class="px-4 py-4 sm:px-6">
+<div class="flex items-center justify-between">
+<div class="text-sm font-medium text-indigo-600">
+<a href="#">Browse topics</a>
+</div>
+<div class="text-sm text-gray-500">
+2.5k resources
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+<div class="px-4 py-5 sm:px-6">
+<h3 class="text-lg font-medium text-gray-900">Physics</h3>
+<p class="mt-1 text-sm text-gray-500">Mechanics, Electricity, Modern Physics</p>
+</div>
+<div class="px-4 py-4 sm:px-6">
+<div class="flex items-center justify-between">
+<div class="text-sm font-medium text-indigo-600">
+<a href="#">Browse topics</a>
+</div>
+<div class="text-sm text-gray-500">
+1.8k resources
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+<div class="px-4 py-5 sm:px-6">
+<h3 class="text-lg font-medium text-gray-900">Computer Science</h3>
+<p class="mt-1 text-sm text-gray-500">Programming, Data Structures, Algorithms</p>
+</div>
+<div class="px-4 py-4 sm:px-6">
+<div class="flex items-center justify-between">
+<div class="text-sm font-medium text-indigo-600">
+<a href="#">Browse topics</a>
+</div>
+<div class="text-sm text-gray-500">
+2.1k resources
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800">
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="xl:grid xl:grid-cols-3 xl:gap-8">
+<div class="grid grid-cols-2 gap-8 xl:col-span-2">
+<div class="md:grid md:grid-cols-2 md:gap-8">
+<div>
+<h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+Solutions
+</h3>
+<ul role="list" class="mt-4 space-y-4">
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+Study Materials
+</a>
+</li>
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+Video Lectures
+</a>
+</li>
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+Practice Tests
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-12 md:mt-0">
+<h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+Support
+</h3>
+<ul role="list" class="mt-4 space-y-4">
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+Help Center
+</a>
+</li>
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+Contact Us
+</a>
+</li>
+<li>
+<a href="#" class="text-base text-gray-300 hover:text-white">
+FAQ
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+<div class="flex space-x-6 md:order-2">
+<a href="#" class="text-gray-400 hover:text-gray-300">
+<span class="sr-only">Facebook</span>
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+<path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+</svg>
+</a>
+<a href="#" class="text-gray-400 hover:text-gray-300">
+<span class="sr-only">Twitter</span>
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+</svg>
+</a>
+</div>
+<p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+&copy; 2024 Study Portal. All rights reserved.
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>
