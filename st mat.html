@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduStudy – Study Material for Grades 8 to 12</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: linear-gradient(135deg, #004e92, #000428);
+      color: #fff;
+    }
+    
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      text-align: center;
+    }
+    header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    header nav ul li {
+      margin: 0 1rem;
+    }
+    header nav ul li a {
+      color: #ffcc00;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    header nav ul li a:hover {
+      color: #fff;
+    }
+    
+    /* Sections */
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    section h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      background: linear-gradient(45deg, #ffcc00, #ff6600);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Material Grid */
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .material {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .material:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .material h3 {
+      font-size: 1.4rem;
+      color: #ffcc00;
+      margin-bottom: 0.5rem;
+    }
+    .material a.btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6600, #ffcc00);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .material a.btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #ff4500, #ffcc00);
+    }
+    
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 400px;
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#class8">Class 8</a></li>
+        <li><a href="#class9">Class 9</a></li>
+        <li><a href="#class10">Class 10</a></li>
+        <li><a href="#class11">Class 11</a></li>
+        <li><a href="#class12">Class 12</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Class 8 -->
+  <section id="class8">
+    <h2>Class 8 Study Material</h2>
+    <div class="material-list">
+      <div class="material"><h3>Mathematics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/MathematicsClass8ID">View</a></div>
+      <div class="material"><h3>Science</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ScienceClass8ID">View</a></div>
+      <div class="material"><h3>English</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/EnglishClass8ID">View</a></div>
+      <div class="material"><h3>Social Science</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/SocialScienceClass8ID">View</a></div>
+      <div class="material"><h3>Computer Science</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ComputerScienceClass8ID">View</a></div>
+    </div>
+  </section>
+
+  <!-- Class 9 -->
+  <section id="class9">
+    <h2>Class 9 Study Material</h2>
+    <div class="material-list">
+      <div class="material"><h3>Mathematics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/MathematicsClass9ID">View</a></div>
+      <div class="material"><h3>Physics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/PhysicsClass9ID">View</a></div>
+      <div class="material"><h3>Chemistry</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ChemistryClass9ID">View</a></div>
+      <div class="material"><h3>Biology</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/BiologyClass9ID">View</a></div>
+      <div class="material"><h3>English</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/EnglishClass9ID">View</a></div>
+    </div>
+  </section>
+
+  <!-- Class 10 -->
+  <section id="class10">
+    <h2>Class 10 Study Material</h2>
+    <div class="material-list">
+      <div class="material"><h3>Mathematics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/MathematicsClass10ID">View</a></div>
+      <div class="material"><h3>Physics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/PhysicsClass10ID">View</a></div>
+      <div class="material"><h3>Chemistry</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ChemistryClass10ID">View</a></div>
+      <div class="material"><h3>Biology</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/BiologyClass10ID">View</a></div>
+    </div>
+  </section>
+
+  <!-- Class 11 -->
+  <section id="class11">
+    <h2>Class 11 Study Material</h2>
+    <div class="material-list">
+      <div class="material"><h3>Mathematics</h3><a href="#" class="btn" data-video="https://youtu.be/UVmaxfdyed4?si=Q8emYuck5BNZ2-Zd">View</a></div>
+      <div class="material"><h3>Physics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/PhysicsClass11ID">View</a></div>
+      <div class="material"><h3>Chemistry</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ChemistryClass11ID">View</a></div>
+      <div class="material"><h3>Biology</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/BiologyClass11ID">View</a></div>
+      <div class="material"><h3>Computer Science</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ComputerScienceClass11ID">View</a></div>
+    </div>
+  </section>
+  
+  <!-- Class 12 -->
+  <section id="class12">
+    <h2>Class 12 Study Material</h2>
+    <div class="material-list">
+      <div class="material"><h3>Mathematics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/MathematicsClass12ID">View</a></div>
+      <div class="material"><h3>Physics</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/PhysicsClass12ID">View</a></div>
+      <div class="material"><h3>Chemistry</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ChemistryClass12ID">View</a></div>
+      <div class="material"><h3>Biology</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/BiologyClass12ID">View</a></div>
+      <div class="material"><h3>Accountancy</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/AccountancyClass12ID">View</a></div>
+      <div class="material"><h3>Computer Science</h3><a href="#" class="btn" data-video="https://www.youtube.com/embed/ComputerScienceClass12ID">View</a></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 EduStudy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Get modal elements
+    var modal = document.getElementById("videoModal");
+    var span = document.getElementsByClassName("close")[0];
+    var videoPlayer = document.getElementById("videoPlayer");
+
+    // Open modal when a button is clicked
+    document.querySelectorAll('.material a.btn').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var videoURL = this.getAttribute('data-video');
+        videoPlayer.src = videoURL;  // Set video URL for the iframe
+        modal.style.display = "block"; // Show the modal
+      });
+    });
+
+    // Close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+      videoPlayer.src = ""; // Stop the
